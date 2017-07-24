@@ -1,0 +1,45 @@
+@media (min-width: 150px) and (max-width:350px) {
+    #logo{
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 351px) and (max-width:450px) {
+    #logo{
+        font-size: 25px;
+    }
+}
+@media (min-width: 451px) and (max-width: 570px) {
+    #logo{
+        font-size: 35px;
+    }
+}
+
+@media (min-width: 571px) and (max-width: 768px) {
+    #logo{
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+    #logo{
+        font-size: 50px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) { 
+    #logo{
+        font-size: 50px;
+    }
+}
+@media (min-width: 1200px) { 
+    #logo{
+        font-size: 40px;
+        margin-top: 5px;
+    }
+    
+    #logar {
+        margin-top: 25px;
+    }
+    
+    
+} 

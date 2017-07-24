@@ -1,0 +1,95 @@
+{% extends "TemplateBase.html.twig" %}
+
+{% block title %}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <script src="/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="background: #fff;">
+        <div class="container">
+            <nav class="navbar navbar-default" style="border-color: #fff;color: #000;background-color: #fff">
+                <div class="container-fluid">
+                    <div class=" col-md-4 dropdown text-left" style="margin-top: 15px;font-size: 30px" >
+                        <i class="fa fa-bars" aria-hidden="true"type="button" data-toggle="collapse"  data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></i>
+                    </div>
+                    <div class="col-md-4 text-center" style="font-family: 'Orbitron', sans-serif;font-size: 50px"><a href="/" style="color: #000;text-decoration: none"><b>NEWSPAPER</b></a></div>
+                    <div class="col-md-4 text-right" style="margin-top: 40px">
+                        <div class="dropdown">
+                            Olá, <b>{{user.nome | upper}}</b>!
+                            <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="drop" aria-label="Alinhar na esquerda" 
+                                    style="background-color: #fff;border-color: #fff;color: #000;
+                                    font-family: 'Patua One', cursive;
+                                    ">
+                                <span class="caret" aria-hidden="true" ></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop" >
+                                <li role="presentation"><a role="menu-item" ><center><b>ACESSO</b></center></a></li>
+                                <li role="presentation"><a role="menu-item" href="/galeria"><i class="fa fa-photo fa-1x" aria-hidden="true"></i> Galeria</li></a></li>
+                                <li role="presentation"><a role="menu-item" href="/listarJornalistas"><i class="fa fa-users fa-1x" aria-hidden="true"></i> Jornalistas</li></a></li>
+                                <li role="presentation"><a role="menu-item" href="/listarNoticias"><i class="fa fa-newspaper-o fa-1x" aria-hidden="true"></i> Notícias</li></a></li>
+                                <li role="presentation"><a role="menu-item"  data-toggle="modal" data-target="#myModal"><i class="fa fa-address-card fa-1x" aria-hidden="true"></i> Perfil</li></a></li>
+                                <li role="presentation"><a role="menu-item" href="/sairUsuario"><i class="fa fa-sign-out fa-1x" aria-hidden="true"></i> Sair</li></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="exCollapsingNavbar">
+                    <div class="bg-inverse p-a-1 col-md-6">
+                        <h4><b>CATEGORIAS</b></h4>
+                        <ul style="list-style: none">
+                            {% for cat in categorias%}
+                                <li><a href="/{{cat.descricao}}" style="color: #000;text-decoration: none">{{cat.descricao}}</a></li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-12" style="background-color: #000;height: 5px"></div>
+
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Digite sua senha para poder editar o seu perfil</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/verificaPerfil" method="POST">
+                            <label for="se">Senha:</label>
+                            <input type="password" name="senha" id="se"><br><br>
+
+
+                            <button type="submit" class="btn btn-success" >Editar</button>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div> 
+    </div>
+</body>
+{% endblock %}
